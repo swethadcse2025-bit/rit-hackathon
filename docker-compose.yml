@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  surgisense-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: surgisense_backend
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - NODE_ENV=production
+    volumes:
+      - surgisense-uploads:/app/uploads
+      - surgisense-logs:/app/logs
+    restart: always
+
+volumes:
+  surgisense-uploads:
+  surgisense-logs:
